@@ -239,14 +239,12 @@ void free_tree(binarytree *first) {
         return;
     }
     if(first->leftChild != NULL) {
-        free(first->leftChild);
+        free_tree(first->leftChild);
     }
     if(first->rightChild != NULL) {
-        free(first->rightChild);
+        free_tree(first->rightChild);
     }
-    if (first->leftChild == NULL && first->rightChild == NULL) {
-        free(first);
-    }
+    free(first);
 }
 
 int main(void) {
