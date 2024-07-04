@@ -234,6 +234,20 @@ void balance_tree(binarytree **first) {
     }
 }
 
+void free_tree(binarytree *first) {
+    if (first == NULL) {
+        return;
+    }
+    if(first->leftChild != NULL) {
+        free(first->leftChild);
+    }
+    if(first->rightChild != NULL) {
+        free(first->rightChild);
+    }
+    if (first->leftChild == NULL && first->rightChild == NULL) {
+        free(first);
+    }
+}
 
 int main(void) {
     binarytree *first = create_tree(50);
@@ -253,6 +267,8 @@ int main(void) {
     balance_tree(&first);
 
     print_node_recursive(first, -10);
+
+    free_tree(first);
 
     return 0;
 }
